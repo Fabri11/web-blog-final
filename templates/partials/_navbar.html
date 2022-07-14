@@ -1,0 +1,67 @@
+{% load static %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Sabella</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'proyectos' %}">Proyectos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'post' %}">Publicaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Videojuegos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre mi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cuenta</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{% block imagen %} {% static 'img/home-bg.jpg' %} {% endblock imagen %}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h2>Blog</h2>
+          <h3><span>{% block titulo_principal %}F.Sabella{% endblock titulo_principal %}</span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% block barra_busqueda %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 search">
+      <form method="get">
+          <div id="custom-search-input">
+            <div class="input-group col-md-12">
+              <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+              <span class="input-group-list">
+                <i class="icon icon-search"></i>
+                <button type="submit" class="boton btn-success">Buscar</button>
+              </span>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock barra_busqueda %}
