@@ -19,7 +19,7 @@
           <a class="nav-link" href="{% url 'post' %}">Publicaciones</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Videojuegos</a>
+          <a class="nav-link" href="{% url 'videojuegos' %}">Videojuegos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Sobre mi</a>
@@ -33,35 +33,44 @@
 </nav>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('{% block imagen %} {% static 'img/home-bg.jpg' %} {% endblock imagen %}')">
+<header class="masthead" style="background-image: url('{% block imagen %} {% static 'img/home.jpg' %} {% endblock imagen %}')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
           <h2>Blog</h2>
-          <h3><span>{% block titulo_principal %}F.Sabella{% endblock titulo_principal %}</span></h3>
+          <h2><span>{% block titulo_principal %}Usuario{% endblock titulo_principal %}</span></h2>
         </div>
       </div>
     </div>
   </div>
-</header>
-{% block barra_busqueda %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 search">
-      <form method="get">
-          <div id="custom-search-input">
-            <div class="input-group col-md-12">
-              <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
-              <span class="input-group-list">
-                <i class="icon icon-search"></i>
-                <button type="submit" class="boton btn-success">Buscar</button>
-              </span>
+  {% block barra_busqueda %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 search">
+        <form method="get">
+            <div id="custom-search-input">
+              <div class="input-group col-md-12">
+                <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "">
+                <span class="input-group-list">
+                  <i class="icon icon-search"></i>
+                  <button type="submit" class="boton btn-primary">Buscar</button>
+                </span>
+              </div>
             </div>
-          </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
+  {% endblock barra_busqueda %}
+</header>
+
+<!-- request.get.buscar -->
+<!-- Main content -->
+
+<div class="container p-4">
+  {% block content %}
+
+  {% endblock %}
 </div>
-{% endblock barra_busqueda %}

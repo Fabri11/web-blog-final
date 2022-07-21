@@ -1,32 +1,27 @@
 {% extends 'index.html' %}
 {% load static %}
 
-{% block titulo_principal %}Proyectos{% endblock titulo_principal %}
-
-{% block imagen %} {% static 'img/tecnologia.jpg' %} {% endblock imagen %}
-
 {% block content %}
-    <h1>Hola! :D</h1>
+    <h1>Últimos Proyectos</h1>
 
     <div class="row my-4 text-center">
 
-        {% for p in project %}
+        {% for project in projects %}
 
             <div class="col-md-4 p-4">
                 <div id="demo" class="card bg-black card-project">
-                    <img src="{{p.imagen.url}}" alt="{{p.titulo}}" class="card-img-top">
+                    <img src="{{project.imagen}}" style="width:322px; height:150px;" alt="{{project.titulo}}" class="card-img-top">
                     <div class="card-body">
-                        <h2>{{p.titulo}}</h2>
-        
-                        <p>{{p.descripcion}}</p>
-        
-                        {% if p.url %}
-                        <a href="{{p.url}}" class="btn btn-light rounded-4 btn-sm" target="_blank">Visitar</a>
+                        <h2>{{project.titulo}}</h2>
+                        <p>{{project.descripcion}}</p>
+                        {% if project.url %}
+                        <a href="{{project.url}}" class="btn btn-light rounded-4 btn-sm" target="_blank">Visitar</a>
                         {% endif %}
                     </div>
                 </div>
             </div>
-        
         {% endfor %}
         </div>
+
+        <h2>Acá va un formulario</h2>
 {% endblock %}

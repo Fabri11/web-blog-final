@@ -2,34 +2,67 @@
 
 {% load static %}
 
-{% block titulo_principal %}Publicaciones{% endblock titulo_principal %}
-
-{% block imagen %} {% static 'img/videojuegos.jpg' %} {% endblock imagen %}
-
-
 {% block content %}
 
-    <h1>Post Semanal</h1>
+  <div class="row my-4 text-center">
+    <h1 class="">Todas Las <strong>Publicaciones</strong></h1>
+  </div>
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            {% block contenido %}
+            {% if posts %}
+              {% for post in posts %}
+              <hr>
+                  <div class="post-preview">
+                    <a href="#" style="color: #ffff; text-decoration: none;">
+                      <h2 class="post-title">
+                        {{ post.titulo }}
+                      </h2>
+                      <h3 class="post-subtitle">
+                        {{ post.descripcion }}
+                      </h3>
+                    </a>
+                    <p class="post-meta">Escrito por
+                     <strong>{{ post.autor }}</strong>   el
+                      {{ post.fecha_creacion }}</p>
+                  </div>
+                  <div class="row justify-content-center justify-content-md-start">
+                    <a href="{% url 'detalles_post' post.slug %}">
+                      <button class="btn btn-secondary">Visitar</button>
+                    </a>
+                  </div>
+                  <hr>
+              {% endfor %}
+            {% else %}
+              <div class="row my-4 text-center">
+                <h1 class="text-align center">No existen post registrados!</h1>
+              </div>
+            {% endif %}
+            {% endblock contenido %}
+          </div>
+        </div>
+    </div>
 
-        {% for posts in post %}
-
-            <div class="p-3">
-                <div class="card card-body bg-black">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="{{posts.imagen}}" alt="{{posts.title}}" class="img-fluid">
-                        </div>
-                        <div class="col-9">
-                            <h2>{{posts.titulo}}</h2>
-                            <h5>{{posts.descripcion|striptags|truncatechars:100}}</h5>
-                            <h5>{{posts.categoria}}</h5>
-                            <p>{{posts.autor}}</p>
-                            <a href="/"" class="btn btn-dark">Ver mas{{posts.title}}</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 float-left">
+          {% if posts.has_previous %}
+            <div class="clearfix">
+              <a href="?page={{ posts.previous_page_number }}" class="btn btn-primary float left">Anterior</a>
             </div>
-
-        {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 float-right">
+          {% if posts.has_next %}
+            <div class="clearfix">
+              <a href="?page={{ posts.next_page_number }}" class="btn btn-primary float right">Siguiente</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
 
 {% endblock %}
