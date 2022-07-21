@@ -8,6 +8,11 @@ from django.core.paginator import Paginator
 def home(request):
     posts = Post.objects.all().order_by('-fecha_creacion')[:]
 
+    paginator = Paginator(posts, 4)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+
     return render(request, 'home.html',{'posts':posts})
 
 
@@ -29,14 +34,10 @@ def search(request):
 
     return render(request, '_navbar.html')
 
-# --------------------------Paginator pages-------------------------------------
-    
-
 #------------------------Post y detalles----------------------------------------
 def post(request):
-    posts = Post.objects.all()
-
-    posts = Post.objects.all().order_by('-fecha_creacion')[:2]
+    posts = Post.objects.all().order_by('-fecha_creacion')[:]
+    # posts = Post.objects.all().order_by('-fecha_creacion')[:2]
 
     paginator = Paginator(posts, 2)
     page = request.GET.get('page')
