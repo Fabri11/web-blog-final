@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 
 {% load static %}
+{% load humanize %}
 
 {% block content %}
     {% if posts %}
@@ -9,7 +10,7 @@
         <div class="row">
             <div class="row my-4 text-center">
                 <h1>{{post.titulo}}</h1>
-                <h3 class="my-2 h5 text-muted">{{post.fecha_creacion}}</h3>
+                <h3 class="my-2 h5 text-muted">Publicado {{post.fecha_creacion|naturaltime}}</h3>
             </div>
             <p class="post-meta">Creador:
                 <strong>{{post.autor}}</strong>

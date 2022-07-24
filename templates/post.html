@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -24,8 +25,8 @@
                       </h3>
                     </a>
                     <p class="post-meta">Escrito por
-                     <strong>{{ post.autor }}</strong>   el
-                      {{ post.fecha_creacion }}</p>
+                     <strong>{{ post.autor }}</strong>
+                      {{ post.fecha_creacion|naturaltime }}</p>
                   </div>
                   <div class="row justify-content-center justify-content-md-start">
                     <a href="{% url 'detalles_post' post.slug %}">

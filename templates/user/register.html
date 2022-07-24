@@ -1,0 +1,33 @@
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Registrarse | Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body style="background: url({% static 'img/home.jpg' %}) no-repeat center center fixed ;background-size: cover;">
+    <div class="modal-dialog text-center">
+        <div class="col-sm-12 main-section">
+            <div class="modal-content p-4">
+                <form action="" class="form" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+
+                    <button type="submit" class="btn btn-primary" id="submit">Registrarse</button>
+                    <div>
+                        <button class="btn btn-secondary">Ya tienes cuenta? <strong><a href="{% url 'login' %}">Inicia con ella</a></strong></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+    
+
+{% endblock %}

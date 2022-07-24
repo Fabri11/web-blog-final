@@ -4,13 +4,23 @@
 
 {% load static %}
 
+
+
 <header class="row bg-black border-backgroud">
+    <!-- Mensaje de confirmación de usuario -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-success" role="alert"{{message.tags}}>
+          {{message}}
+        </div>
+      {% endfor %}
+    {% endif %}
+
     <div class="col-md-4 my-auto">
         <img src="{% static 'img/perfil.jpg' %}" style="width:250px ; height: 250px;" class="background-img" alt="">
     </div>
-
     <div class="col-md-8 my-auto p-4">
-        <h1>Yo soy Nombre del <strong>Usuario</strong></h1>
+        <h1>Bienvendio<strong> ¡{{user.username | upper}}!</strong></h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi aut repudiandae ratione cupiditate quas, quibusdam suscipit nobis, quidem nam recusandae minima vitae impedit doloribus. Vel reprehenderit blanditiis recusandae aut odio adipisci, odit nulla illum, eum doloribus, in sapiente ullam deleniti sunt consequatur! Aspernatur sed explicabo rerum ea quasi distinctio ratione?</p>
         <a href="">
           <button class="btn btn-primary">Editar perfil</button>
