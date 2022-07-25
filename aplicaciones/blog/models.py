@@ -1,6 +1,9 @@
 
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+
 
 # Create your models here.
 
@@ -19,8 +22,10 @@ class Categoria(models.Model):
 
 class Autor(models.Model):
     id= models.AutoField(primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nombres = models.CharField( 'Nombre del Autor' ,max_length=255, blank=True, null=False)
     apellidos = models.CharField( 'Apellidos del Autor' ,max_length=255, blank=True, null=False)
+    imagen = models.ImageField(default='img/profile2.png')
     facebook = models.URLField( 'Facebook', blank=True, null=True)
     github = models.URLField( 'Github', blank=True, null=True)
     twitter = models.URLField( 'Twitter', blank=True, null=True)
@@ -28,14 +33,20 @@ class Autor(models.Model):
     correo = models.EmailField( 'Correo Electrónico', blank=True, null=False)
     estado = models.BooleanField( 'Autor Activo/Autor no Activo', default= True)
     fecha_creacion = models.DateField('Fecha Creación',auto_now = False, auto_now_add=True)
-
-
     class meta:
         verbose_name = 'Autor'
         verbose_name_plural = 'Autores'
 
     def __str__(self):
         return "{0},{1}".format(self.apellidos, self.nombres)
+
+    def create_autor(sender, instance,created ,**kwargs):
+        if created:
+            Autor.objects.create(user=instance)
+
+    post_save.connect(create_autor, sender=User)
+
+
 
 
 # Clase Posteo

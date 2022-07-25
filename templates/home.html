@@ -17,7 +17,7 @@
     {% endif %}
 
     <div class="col-md-4 my-auto">
-        <img src="{% static 'img/perfil.jpg' %}" style="width:250px ; height: 250px;" class="background-img" alt="">
+        <img src="{% static 'img/profile1.png' %}" style="width:250px ; height: 250px;" class="background-img" alt="">
     </div>
     <div class="col-md-8 my-auto p-4">
         <h1>Bienvendio<strong> ¡{{user.username | upper}}!</strong></h1>
@@ -27,32 +27,6 @@
         </a>
     </div>
 </header>
-
-<!-- <div class="row my-4 text-center">
-    <h1 class="">Proyectos</h1>
-</div>
-
-<div class="row my-4 text-center ">
-
-    {% for project in projects %}
-
-        <div class="col-md-4 p-4">
-            <div id="demo" class="card bg-black card-project">
-                <img src="{{project.imagen.url}}" alt="{{project.titulo}}" class="card-img-top">
-                <div class="card-body">
-                    <h2>{{project.titulo}}</h2>
-
-                    <p>{{project.descripcion}}</p>
-
-                    {% if project.url %}
-                        <a href="{{project.url}}" class="btn btn-light rounded-4 btn-sm" target="_blank">Visitar</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-    {% endfor %}
-</div> -->
 
 <div class="row my-4 text-center">
     <h1 class="">Publicaciones</h1>

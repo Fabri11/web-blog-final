@@ -17,11 +17,12 @@
                 <form action="" class="form" method="POST">
                     {% csrf_token %}
                     {{form.as_p}}
-
-                    <button type="submit" class="btn btn-primary" id="submit">Registrarse</button>
-                    <div>
-                        <button class="btn btn-secondary">Ya tienes cuenta? <strong><a href="{% url 'login' %}">Inicia con ella</a></strong></button>
-                    </div>
+                    
+                    
+                <button type="submit" class="btn btn-primary" id="submit">Registrarse</button>
+                <div>
+                    <button class="btn btn-secondary">Ya tienes cuenta? <strong><a href="{% url 'login' %}">Inicia con ella</a></strong></button>
+                </div>
                 </form>
             </div>
         </div>

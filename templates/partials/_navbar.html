@@ -19,10 +19,7 @@
           <a class="nav-link" href="{% url 'post' %}">Publicaciones</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'videojuegos' %}">Videojuegos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sobre mi</a>
+          <a class="nav-link" href="{% url 'about_me'%}">Sobre mi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
@@ -39,8 +36,8 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h2>Blog</h2>
-          <h2><span>{% block titulo_principal %}Usuario{% endblock titulo_principal %}</span></h2>
+          <h2>Blog de:</h2>
+          <h2><span>{{user.username | upper}}</span></h2>
         </div>
       </div>
     </div>

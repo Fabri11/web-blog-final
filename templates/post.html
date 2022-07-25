@@ -5,6 +5,23 @@
 
 {% block content %}
 
+
+  <div class="text-center">
+    <div class="alert alert-secondary" role="alert">
+      <a class="alert-link" href="{% url 'general' %}">General</a>
+    </div>
+    <div class="alert alert-secondary" role="alert">
+      <a class="alert-link" href="{% url 'videojuegos' %}">Videojuegos</a>
+    </div>
+    <div class="alert alert-secondary" role="alert">
+      <a class="alert-link" href="{% url 'preguntas' %}">Preguntas</a>
+    </div>
+    <div class="alert alert-secondary" role="alert">
+      <a class="alert-link" href="{% url 'tecnologia' %}">Tecnología</a>
+    </div>
+  </div>
+
+
   <div class="row my-4 text-center">
     <h1 class="">Todas Las <strong>Publicaciones</strong></h1>
   </div>

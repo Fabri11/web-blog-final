@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 {% load static %}
 
+
 {% block content %}
     <h1>Últimos Proyectos</h1>
 
@@ -15,7 +16,9 @@
                         <h2>{{project.titulo}}</h2>
                         <p>{{project.descripcion}}</p>
                         {% if project.url %}
-                        <a href="{{project.url}}" class="btn btn-light rounded-4 btn-sm" target="_blank">Visitar</a>
+                            <button class="btn btn-secondary">
+                                <a href="{{project.url}}" style="text-decoration: none; color: #ffff;" class="rounded-4 btn-sm" target="_blank">Visitar</a>
+                            </button>
                         {% endif %}
                     </div>
                 </div>
@@ -23,5 +26,9 @@
         {% endfor %}
         </div>
 
-        <h2>Acá va un formulario</h2>
+        <div class="text-center my-6">
+            <button class="btn btn-secondary">
+                <a href="{% url 'subir_proyecto' %}" style="color: #ffff; text-decoration: none;">Crear nuevo <strong>¡Proyecto!</strong></a>
+            </button>
+        </div>
 {% endblock %}

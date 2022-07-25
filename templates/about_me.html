@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="row my-4 text-center">
+            <h1>Sobre mi</h1>
+            <h3 class="my-2 h5 text-muted">Me llamo Fabrizio Sabella</h3>
+        </div>
+        <p class="post-meta">Soy el
+            <strong>Creador</strong> de esta Página Web.
+        </p>
+        <div class="text-center">
+            <div class="my-3">
+            <p>Tengo 21 años y solamente yo estuve trabajando estos 20 dias en este proyecto, espero
+                poder seguir mejorandoló y seguiré subiendo actualizaciones de este <strong>Proyecto</strong>
+            </p>
+            <p>Ahora colocaré <strong>Lorem Ipsum</strong> para completar campos de texto. <strong>Saludos</strong>, aquí nos despedimos :)</p>
+        </div>
+        <h4><strong>¡Saludos! Espero te haya gustado :)</strong></h4>
+        <img src="{% static 'img/profile2.png' %}" style="width:250px ; height: 250px;" class="img-fluid">
+    </div>
+</div>
+
+{% endblock %}
