@@ -42,5 +42,5 @@ views.py Son las vistas creadas a partir de nuestros modelos y formularios para 
 urls.py Ubicación de las rutas utilizadas en el proyecto
 
 #Buscar y cargar
-
+---------------------
 Podremos subir nuevos posts, como tambien podremos subir nuestros proyectos y buscarlos mediante nuetro " Search "
