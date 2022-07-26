@@ -44,3 +44,7 @@ urls.py Ubicación de las rutas utilizadas en el proyecto
 #Buscar y cargar
 ---------------------
 Podremos subir nuevos posts, como tambien podremos subir nuestros proyectos y buscarlos mediante nuetro " Search "
+---------------------
+Video de recorrido por la página.
+
+https://youtu.be/nbuoP699_Cw
