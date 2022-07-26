@@ -1,5 +1,5 @@
 
-from .models import *
+from .models import Categoria, Post, Autor, Project
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -53,7 +53,7 @@ def detallesPost(request, slug):
     print(posts)
     return render(request, 'detalles_post.html', {'posts':posts})
 
-# ------------------------- Pages----------------------------------------------------
+# ------------------------- Proyecto----------------------------------------------------
 
 def proyectos(request):
     projects = Project.objects.all()
@@ -74,11 +74,11 @@ def projectForm(request):
             # post = get_object_or_404(Posts, pk=post_id)
             posts.save()
 
-            return render(request, '_project_form.html', {'posts':posts})
+            return render(request, 'home.html', {'posts':posts})
 
         else:
             miFormulario = PostForm()
-            return render(request, 'home.html', {'miFormulario':miFormulario})
+            return render(request, '_project_form.html', {'miFormulario':miFormulario})
 
 
 #------------------- Vistas de las diferentes categorias-------------------------------
@@ -88,28 +88,30 @@ def tecnologia(request):
         estado = True,
         categoria = Categoria.objects.filter(nombre__iexact = 'Tecnología')
     )
-    return render(request, 'tecnologia.html', {'posts':posts})
+    return render(request, 'categorias/tecnologia.html', {'posts':posts})
 
 def general(request):
     posts = Post.objects.filter(
         estado = True,
         categoria = Categoria.objects.get(nombre__iexact  = 'General')
     )
-    return render(request, 'general.html', {'posts':posts})
+    print(posts)
+    return render(request, 'categorias/general.html', {'posts':posts})
 
 def videojuegos(request):
     posts = Post.objects.filter(
         estado = False,
-        categoria = Categoria.objects.get(nombre__iexact  = 'VideoJuegos')
+        categoria = Categoria.objects.get(nombre__iexact  = 'Videojuegos')
     )
-    return render(request, 'videojuegos.html', {'posts':posts})
+    print(posts)
+    return render(request, 'categorias/videojuegos.html', {'posts':posts})
 
 def preguntas(request):
     posts = Post.objects.filter(
         estado = False,
-        categoria = Categoria.objects.get(nombre__iexact = 'Preguntas')
+        categoria = Categoria.objects.get(nombre__iexact = 'Preguntas/Consultas')
     )
-    return render(request, 'preguntas.html', {'posts' : posts})
+    return render(request, 'categorias/preguntas.html', {'posts' : posts})
 
 
 # ---------------------------------Login----------------------------------------------
@@ -136,3 +138,8 @@ def register(request):
 
 def about_me(request):
     return render(request, 'about_me.html')
+
+# -----------------------------not page------------------------------------------------
+
+def not_page(request):
+    return render(request, 'build/not_page.html')

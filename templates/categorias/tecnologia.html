@@ -1,1 +1,36 @@
 {% extends 'index.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+          {% block contenido %}
+            {% if post %}
+            {% for post in posts %}
+                <hr>
+                <div class="post-preview">
+                    <h2 class="post-title">
+                      {{ post.titulo }}
+                    </h2>
+                    <h3 class="post-subtitle">
+                      {{ post.descripcion }}
+                    </h3>
+                  </a>
+                  <p class="post-meta">Escrito por
+                   <strong>{{ post.autor }}</strong>   el
+                    {{ post.fecha_creacion |naturaltime }}</p>
+                </div>
+                <hr>
+            {% endfor %}
+            {% else %}
+            <div class="row my-4 text-center">
+                <h1 class="text-align center">No existen post registrados!</h1>
+            </div>
+          {% endif %}
+          {% endblock contenido %}
+      </div>
+    </div>
+</div>
+{% endblock %}
